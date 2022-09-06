@@ -1,13 +1,11 @@
 import { useQuery } from '@apollo/client';
 import ClientRow from './ClientRow';
-import { Loader } from '../Loader';
 
-import { GET_CLIETNS } from '../../queries/clientQueries';
+import { GET_CLIENTS } from '../../queries/clientQueries';
 
 const Clients = () => {
-  const { loading, error, data } = useQuery(GET_CLIETNS);
+  const { loading, error, data } = useQuery(GET_CLIENTS);
   
-  if (loading) return <Loader />
   if (error) return <p>Something's wrong I can feel it...</p>
 
   return (
