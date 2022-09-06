@@ -3,6 +3,7 @@ import { Loader } from '../Components/Loader';
 import { useQuery } from '@apollo/client';
 import { GET_SINGLE_PROJECT } from "../queries/projectQueries";
 import ClientInfo from '../Components/ClientInfo';
+import { DeleteProject } from "../Components/ProjectMgmt/DeleteProject";
 
 export const Project = () => {
   const { id } = useParams();
@@ -25,6 +26,8 @@ export const Project = () => {
           <p className='lead'>{data.project.status}</p>
 
           <ClientInfo client={data.project.client} />
+
+          <DeleteProject projectId={data.project.id} />
         </div> 
       )}
     </>
