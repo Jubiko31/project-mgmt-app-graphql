@@ -1,15 +1,15 @@
 import { FaTrash } from 'react-icons/fa';
 import { useMutation } from '@apollo/client';
 import { DELETE_CLIENT } from '../../mutations/ClientMutation';
-import { GET_CLIETNS } from '../../queries/clientQueries';
+import { GET_CLIENTS } from '../../queries/clientQueries';
 
 const ClientRow = ({ client }) => {
   const [deleteClient] = useMutation(DELETE_CLIENT, {
     variables: { id: client.id },
     update(cache, { data: { deleteClient } }) {
-      const { clients } = cache.readQuery({ query: GET_CLIETNS });
+      const { clients } = cache.readQuery({ query: GET_CLIENTS });
       cache.writeQuery({
-        query: GET_CLIETNS,
+        query: GET_CLIENTS,
         data: { clients: clients.filter(client => client.id !== deleteClient.id) }, 
       });
     },
