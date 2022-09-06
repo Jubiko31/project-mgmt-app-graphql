@@ -3,6 +3,7 @@ import { Loader } from '../Components/Loader';
 import { useQuery } from '@apollo/client';
 import { GET_SINGLE_PROJECT } from "../queries/projectQueries";
 import ClientInfo from '../Components/ClientInfo';
+import { EditForm } from "../Components/ProjectMgmt/EditForm";
 import { DeleteProject } from "../Components/ProjectMgmt/DeleteProject";
 
 export const Project = () => {
@@ -26,6 +27,8 @@ export const Project = () => {
           <p className='lead'>{data.project.status}</p>
 
           <ClientInfo client={data.project.client} />
+
+          <EditForm project={data.project} />
 
           <DeleteProject projectId={data.project.id} />
         </div> 
